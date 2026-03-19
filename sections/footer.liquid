@@ -1,0 +1,21 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="stack" style="gap:10px;padding:20px 0;border-top:1px solid var(--color-border)">
+      <div class="row between center wrap">
+        <div class="muted">© {{ 'now' | date: '%Y' }} {{ shop.name }}</div>
+        <div class="row center wrap" style="gap:10px">
+          <a class="muted" href="{{ routes.search_url }}">{{ 'general.search' | t }}</a>
+          <a class="muted" href="{{ routes.root_url }}">Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}
+

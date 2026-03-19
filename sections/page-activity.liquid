@@ -1,0 +1,85 @@
+<section class="container stack" style="gap:16px">
+  <div class="hero">
+    <div class="stack" style="gap:10px">
+      <h1 class="hero__title">{{ section.settings.banner_title | escape }}</h1>
+      {%- if section.settings.banner_subtitle != blank -%}
+        <p class="hero__sub">{{ section.settings.banner_subtitle }}</p>
+      {%- endif -%}
+      <div class="hero__actions">
+        {%- if section.settings.primary_label != blank and section.settings.primary_link != blank -%}
+          <a class="btn btn--accent" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank and section.settings.secondary_link != blank -%}
+          <a class="btn btn--ghost" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="activity-grid">
+    <div class="card">
+      <div class="card__pad stack" style="gap:10px">
+        <h2 style="margin:0">Highlights</h2>
+        <div class="grid grid--2">
+          {%- for block in section.blocks -%}
+            <div class="card" style="box-shadow:none">
+              <div class="card__pad stack" style="gap:8px">
+                {%- if block.settings.image != blank -%}
+                  <div class="card" style="overflow:hidden;border-radius:16px;box-shadow:none">
+                    <img class="img-fit" src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
+                  </div>
+                {%- endif -%}
+                <div style="font-weight:800">{{ block.settings.title | escape }}</div>
+                <div class="muted" style="line-height:1.6">{{ block.settings.text }}</div>
+                {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                  <a class="btn btn--primary" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div class="card__pad stack" style="gap:10px">
+        <h3 style="margin:0">Promo</h3>
+        <div class="muted" style="line-height:1.6">Use consistent button styles, images, and spacing across activity pages to improve usability.</div>
+        <ul class="muted" style="margin:0;padding-left:18px;line-height:1.8">
+          <li>Responsive layout</li>
+          <li>Clear CTA states</li>
+          <li>Image fit consistency</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Activity page",
+  "settings": [
+    { "type": "text", "id": "banner_title", "label": "Banner title", "default": "Activity" },
+    { "type": "textarea", "id": "banner_subtitle", "label": "Banner subtitle", "default": "Limited-time offer with consistent layout and button states." },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop now" },
+    { "type": "url", "id": "primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Learn more" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary button link" }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Deal title" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe the promo and what users should do next." },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}
+

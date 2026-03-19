@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-index",
+      "settings": {
+        "heading": "Welcome",
+        "subheading": "A clean, mobile-first Shopify theme starter with fast interactions.",
+        "cta_label": "Shop all",
+        "cta_link": "/collections/all"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured products",
+        "collection": "all",
+        "limit": 8
+      }
+    }
+  },
+  "order": ["main", "featured_collection"]
+}
+

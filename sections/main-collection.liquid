@@ -1,0 +1,49 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+  <section class="container stack" style="gap:16px">
+    <div class="row between center wrap">
+      <div class="stack" style="gap:6px">
+        <h1 style="margin:0">{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="muted" style="max-width:70ch">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+      <div class="muted">{{ paginate.items }} items</div>
+    </div>
+
+    <div class="grid grid--4">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product, collection: collection %}
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="row center wrap" role="navigation" aria-label="Pagination">
+        {%- if paginate.previous -%}
+          <a class="btn" href="{{ paginate.previous.url }}">Prev</a>
+        {%- endif -%}
+        <span class="muted" style="padding:10px 12px">Page {{ paginate.current_page }} / {{ paginate.pages }}</span>
+        {%- if paginate.next -%}
+          <a class="btn" href="{{ paginate.next.url }}">Next</a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}
+

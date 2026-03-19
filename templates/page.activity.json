@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-activity",
+      "settings": {
+        "banner_title": "Activity",
+        "banner_subtitle": "Limited-time offer with consistent layout and button states.",
+        "primary_label": "Shop now",
+        "primary_link": "/collections/all",
+        "secondary_label": "Learn more",
+        "secondary_link": "/pages/about"
+      }
+    }
+  },
+  "order": ["main"]
+}
+

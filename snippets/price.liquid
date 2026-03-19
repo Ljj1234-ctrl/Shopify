@@ -1,0 +1,10 @@
+{%- assign compare_at = compare_at_price | default: product.compare_at_price -%}
+{%- assign price_value = price | default: product.price -%}
+
+<div class="price">
+  <span class="price__now">{{ price_value | money }}</span>
+  {%- if compare_at and compare_at > price_value -%}
+    <span class="price__compare">{{ compare_at | money }}</span>
+  {%- endif -%}
+</div>
+

@@ -1,0 +1,23 @@
+{%- liquid
+  assign p = product
+  assign url = p.url | within: collection
+-%}
+
+<div class="product-card card">
+  <a class="product-card__media" href="{{ url }}">
+    {%- if p.featured_image -%}
+      <img class="img-fit" src="{{ p.featured_image | image_url: width: 900 }}" alt="{{ p.featured_image.alt | escape }}" loading="lazy">
+    {%- endif -%}
+  </a>
+  <div class="card__pad stack" style="gap:10px">
+    <h3 class="product-card__title"><a href="{{ url }}">{{ p.title }}</a></h3>
+    {% render 'price', product: p %}
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+      <button class="btn btn--accent" type="submit" data-loading-label="Adding…"{% unless p.available %} disabled{% endunless %}>
+        {%- if p.available -%}{{ 'product.add_to_cart' | t }}{%- else -%}{{ 'product.sold_out' | t }}{%- endif -%}
+      </button>
+    </form>
+  </div>
+</div>
+

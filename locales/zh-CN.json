@@ -1,0 +1,23 @@
+{
+  "accessibility": {
+    "skip_to_content": "跳到主要内容"
+  },
+  "general": {
+    "search": "搜索",
+    "menu": "菜单",
+    "close": "关闭"
+  },
+  "cart": {
+    "title": "购物车",
+    "empty": "你的购物车还是空的。",
+    "checkout": "去结账",
+    "view_cart": "查看购物车",
+    "subtotal": "小计"
+  },
+  "product": {
+    "add_to_cart": "加入购物车",
+    "sold_out": "售罄",
+    "quantity": "数量"
+  }
+}
+

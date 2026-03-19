@@ -1,0 +1,53 @@
+{%- liquid
+  assign c = collections[section.settings.collection]
+  assign limit = section.settings.limit | default: 8
+-%}
+
+<section class="container" style="margin-top:18px">
+  <div class="row between center wrap" style="margin-bottom:10px">
+    <h2 style="margin:0">{{ section.settings.heading | escape }}</h2>
+    {%- if c != blank -%}
+      <a class="muted" href="{{ c.url }}">View all</a>
+    {%- endif -%}
+  </div>
+
+  {%- if c == blank -%}
+    <div class="card"><div class="card__pad muted">Select a collection in the section settings.</div></div>
+  {%- else -%}
+    <div class="grid grid--4">
+      {%- for product in c.products limit: limit -%}
+        {% render 'product-card', product: product, collection: c %}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Products to show",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}
+
