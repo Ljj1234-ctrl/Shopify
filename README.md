@@ -36,29 +36,6 @@ npm i -g @shopify/cli @shopify/theme
 shopify theme dev
 ```
 
-## 截图预览图的方法（推荐用浏览器）
-
-前提：你已经在浏览器里打开 `shopify theme dev` 给你的预览链接。
-
-- **桌面截图**：
-  - Windows：按 `Win + Shift + S`，框选页面区域保存
-  - 或 Chrome：按 `Ctrl + Shift + I` → `Ctrl + Shift + P` → 输入 `screenshot` → 选 `Capture full size screenshot`
-- **iPhone/移动端截图（Chrome 模拟）**：
-  - 打开开发者工具：`Ctrl + Shift + I`
-  - 切换设备工具栏：`Ctrl + Shift + M`
-  - 选择 iPhone 机型（如 iPhone 14 Pro），刷新页面
-  - `Ctrl + Shift + P` → 输入 `screenshot` → 选 `Capture screenshot`（或 full size）
-
-把图片保存到本项目的 `docs/` 目录，推荐命名如下（你也可以自己改 README 里的文件名）：
-
-```text
-docs/preview-home-desktop.png
-docs/preview-home-mobile.png
-docs/preview-product.png
-docs/preview-cart.png
-docs/preview-activity.png
-```
-
 ## 直接上传到 Shopify
 
 1. 将整个目录打包成 zip（不要多包一层目录）
